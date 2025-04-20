@@ -59,3 +59,27 @@ const Gallery = ({ tours, setTours, onRemove }) => {
   if (error) {
     return <h2>Something went wrong.</h2>;
   }
+
+  //Task 3 - Render tours with TourCard and implement Not Interested removal
+  
+  //Display all the tours by creating a TourCard for each tour
+  return (
+    <section className="gallery">
+      {tours.map((tour) => (
+        <TourCard
+          //A unique key to help React keep track of each tour
+          key={tour.id}
+
+          //Pass all the tour details as props to the TourCard component
+          {...tour}
+
+          //Pass the function to remove a tour when the user clicks "Not Interested"
+          onRemove={onRemove}
+        />
+      ))}
+    </section>
+  );
+};
+
+//Exporting the Gallery component so it can be used in other files like App.jsx
+export default Gallery;

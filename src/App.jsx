@@ -20,6 +20,14 @@ function App() {
   //State to track the currently selected destination (default is 'all')
   const [selectedTour, setSelectedTour] = useState('all'); 
 
+  //Task 3 - Render tours with TourCard and implement Not Interested removal
+  
+  //Removes a tour by ID and resets filter if needed
+  const removeTour = (id) => {
+    setTours((prevTours) => {
+      //Filter out the tour with the given ID
+      const updatedTours = prevTours.filter((tour) => tour.id !== id);
+
   //Task 2 - Add destination filter dropdown and manage selected tour state
 
   //Filter the tours based on the selected destination
@@ -45,3 +53,23 @@ function App() {
         //Function to update the selected destination
         setSelectedTour={setSelectedTour}
       />
+
+      {/* Task 3 - Render tours with TourCard and implement Not Interested removal */}
+
+      {/* Component to display the list of tours */}
+      <Gallery
+        //Filtered list of tours
+        tours={filteredTours} 
+        
+        //Function to update the tours list
+        setTours={setTours}
+
+        //Function to remove a tour
+        onRemove={removeTour}
+      />
+    </main>
+  )
+}
+
+//Exporting the main App component as the default export
+export default App;
