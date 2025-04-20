@@ -60,6 +60,20 @@ const Gallery = ({ tours, setTours, onRemove }) => {
     return <h2>Something went wrong.</h2>;
   }
 
+  //Task 4 - Display message and refresh button when all tours are removed
+  
+  //If there are no tours left, show a message and a button to refresh the tours
+  if (tours.length === 0) {
+    return (
+      <div className="no-tours">
+        <h2>No tours left. Refresh to reload.</h2>
+        <button onClick={fetchTours}>
+          Refresh
+        </button>
+      </div>
+    );
+  }
+
   //Task 3 - Render tours with TourCard and implement Not Interested removal
   
   //Display all the tours by creating a TourCard for each tour

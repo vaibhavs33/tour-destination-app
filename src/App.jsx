@@ -28,6 +28,21 @@ function App() {
       //Filter out the tour with the given ID
       const updatedTours = prevTours.filter((tour) => tour.id !== id);
 
+      //Task 4 - Display message and refresh button when all tours are removed
+
+      //If no tours remain for the selected destination, reset the filter to 'all'
+      if (
+        selectedTour !== 'all' &&
+        updatedTours.filter((tour) => tour.name === selectedTour).length === 0
+      ) {
+        setSelectedTour('all');
+      }
+
+      //Return the updated list of tours
+      return updatedTours;
+    });
+  };
+
   //Task 2 - Add destination filter dropdown and manage selected tour state
 
   //Filter the tours based on the selected destination
